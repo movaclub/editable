@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../service/api.service';
+import { Tabular } from '../../interface/tabular';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-datum',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatumComponent implements OnInit {
 
-  constructor() { }
+  userList$: Observable<Tabular[]>;
+  constructor(private apiService: ApiService ) { }
 
   ngOnInit() {
+    this.userList$ = this.apiService.getUsers();
   }
 
 }
