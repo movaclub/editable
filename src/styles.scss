@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+$background-color: snow;
+
+body {
+  background-color: $background-color;
+  font-family: 'Montserrat', sans-serif;
+}
+header {
+  padding-top: 5px;
+  font-weight: bolder;
+  font-size: 1.123em;
+  color:#555;
+  border-bottom: 1px solid teal ;
+}
+
+.e-body{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.e-main{
+  flex: 1;
+}
+
+.e-footer{
+  display: flex;
+  padding: 5px;
+  font-size: .6969em;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  color: gray;
+}
