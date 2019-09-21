@@ -1,17 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 $background-color: snow;
+$teal-color: teal;
 
 body {
   background-color: $background-color;
   font-family: 'Montserrat', sans-serif;
 }
 header {
-  padding-top: 5px;
+  padding: 9px;
   font-weight: bolder;
   font-size: 1.123em;
-  color:#555;
-  border-bottom: 1px solid teal ;
+  color:$background-color;
+  background-color: $teal-color;
+  border-bottom: 1px solid $teal-color ;
+  text-align: end;
 }
 
 .e-body{
@@ -33,5 +36,6 @@ header {
   width: 100%;
   justify-content: space-around;
   align-items: center;
-  color: gray;
+  color:$background-color;
+  background-color: $teal-color;
 }

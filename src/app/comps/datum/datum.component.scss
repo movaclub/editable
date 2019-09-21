@@ -1,6 +1,9 @@
+$background-color: snow;
+$teal-color: teal;
+
 #separator {
   border-left: 1px dotted #666666;
-  min-height: 90vh;
+  //min-height: 90vh;
   padding-left: 9px;
 }
 
@@ -16,13 +19,25 @@
   display: flex;
   font-weight: bold;
   font-size: 1.124em;
-  color: #777;
-  border-bottom: 1px dotted #555555;
-  margin: 3px;
+  color: $teal-color;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .tbody{
+  border-top: 1px dotted #555555;
   display: flex;
-  font-size: .897em;
-  margin-left: 3px;
+  font-size: .963em;
+  padding: 5px;
+}
+
+
+.arrows{
+  cursor: pointer;
+  padding: 1px;
+  margin: 1px;
+  font-weight: bolder;
+  color:$background-color;
+  background-color: $teal-color;
+  border-radius: 49%;
 }

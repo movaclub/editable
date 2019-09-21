@@ -1,23 +1,60 @@
-<section *ngIf="userList$ | async as users " id="separator">
+<!--<section *ngIf="userList$ | async as users " id="separator">-->
+<section *ngIf="userList?.length" id="separator">
+<!--  <pre>{{userList | json}}</pre>-->
   <div style="flex-direction: row;">
     <div class="theader">
-      <div class="fname">First Name</div>
-      <div class="lname">Last Name</div>
-      <div class="age">Age</div>
-      <div class="status">Status</div>
-      <div class="registered">Registered</div>
-      <div class="company">Company</div>
+      <div class="fname">
+        First Name
+        <span class="arrows">&uarr;</span>
+        <span class="arrows">&darr;</span>
+      </div>
+      <div class="lname">
+        Last Name
+        <span class="arrows">&uarr;</span>
+        <span class="arrows">&darr;</span>
+      </div>
+      <div class="age">
+        Age
+        <span class="arrows">&uarr;</span>
+        <span class="arrows">&darr;</span>
+      </div>
+      <div class="status">
+        Status
+        <span class="arrows">&uarr;</span>
+        <span class="arrows">&darr;</span>
+      </div>
+      <div class="registered">
+        Registered
+        <span class="arrows">&uarr;</span>
+        <span class="arrows">&darr;</span>
+      </div>
+      <div class="company">
+        Company
+        <span class="arrows">&uarr;</span>
+        <span class="arrows">&darr;</span>
+      </div>
     </div>
   </div>
-  <ng-container *ngFor="let user of users">
+<!--  <ng-container *ngFor="let user of users">-->
+  <ng-container *ngFor="let user of userList">
     <div style="flex-direction: row;">
       <div class="tbody">
-        <div class="fname">{{user.name.first}}</div>
-        <div class="lname">{{user.name.last}}</div>
-        <div class="age">{{user.age}}</div>
-        <div class="status">{{user.isActive}}</div>
-        <div class="registered">{{user.registered | date}}</div>
-        <div class="company">{{user.company}}</div>
+        <div class="fname">
+          {{user.name.first}}
+        </div>
+        <div class="lname">
+          {{user.name.last}}
+        </div>
+        <div class="age">
+          {{user.age}}
+        </div>
+        <div class="status" [innerHTML]="user.isActive | booleaner"></div>
+        <div class="registered">
+          {{user.registered | date}}
+        </div>
+        <div class="company">
+          {{user.company}}
+        </div>
       </div>
     </div>
   </ng-container>

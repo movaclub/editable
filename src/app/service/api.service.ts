@@ -1,20 +1,16 @@
-// API data service(users): https://jsonplaceholder.typicode.com/users
-// http://jsonplaceholder.typicode.com/users?_start=0&_limit=5
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { BehaviorSubject } from 'rxjs';
-
 import { Tabular } from '../interface/tabular';
+import {map, take} from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getUsers(): Observable<Tabular[]> {
     return this.http.get<Tabular[]>('../../../assets/fakeUsers.json');
   }
+
 }

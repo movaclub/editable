@@ -9,12 +9,14 @@ import { DatumComponent } from './comps/datum/datum.component';
 import { ApiService } from './service/api.service';
 import { ControlService } from './service/control.service';
 import { TabularService } from './service/tabular.service';
+import { BooleanerPipe } from './pipe/booleaner.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ControlsComponent,
-    DatumComponent
+    DatumComponent,
+    BooleanerPipe
   ],
   imports: [
     BrowserModule,
