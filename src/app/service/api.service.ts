@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Tabular } from '../interface/tabular';
-import {map, take} from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { States } from '../interface/states';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
 
-  constructor(private http: HttpClient) {}
+  private states: BehaviorSubject<States> = new BehaviorSubject<States>({tabular: null, controls: null});
+  curStates = this.states.asObservable();
+  constructor(private http: HttpClient) {
+    this.getStartStates();
+  }
 
-  getUsers(): Observable<Tabular[]> {
-    return this.http.get<Tabular[]>('../../../assets/fakeUsers.json');
+  getStartStates(): void {
+    this.http.get<Tabular[]>('../../../assets/fakeUsers.json')
+      .subscribe( res => this.states.next({tabular: res, controls: {cursor: 0, perPage: 10}}) );
   }
 
 }

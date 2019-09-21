@@ -3,6 +3,6 @@ import { Controls } from '../interface/controls'; // current state values, if an
 import { Observable } from 'rxjs';
 
 export interface States {
-  tabular: Observable<Tabular[]>;
+  tabular: Tabular[];
   controls: Controls;
 }
