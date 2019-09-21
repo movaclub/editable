@@ -1,6 +1,6 @@
 <div *ngIf="userList$ | async as users ">
   <h4>Total users: {{users.length}}</h4>
   <div *ngFor="let user of users">
-    {{user.name}} - {{user.username}} - {{user.address.city}}
+    {{user.name.first}} - {{user.name.last}} - {{user.email}}
   </div>
 </div>

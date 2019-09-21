@@ -1,23 +1,18 @@
 export interface Tabular {
-  id: number;
-  name: string;
-  username: string;
+  _id: string;
+  index: number;
+  guid: string;
+  isActive: boolean;
+  balance: string;
+  age: number;
+  name: {
+    first: string;
+    last: string;
+  };
+  company: string;
   email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
   phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
+  address: string;
+  about: string;
+  registered: string;
 }
