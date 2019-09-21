@@ -1,0 +1,28 @@
+#separator {
+  border-left: 1px dotted #666666;
+  min-height: 90vh;
+  padding-left: 9px;
+}
+
+.fname, .lname, .company, .registered {
+  width: 20%;
+}
+
+.age, .status {
+  width: 10%;
+}
+
+.theader{
+  display: flex;
+  font-weight: bold;
+  font-size: 1.124em;
+  color: #777;
+  border-bottom: 1px dotted #555555;
+  margin: 3px;
+}
+
+.tbody{
+  display: flex;
+  font-size: .897em;
+  margin-left: 3px;
+}
