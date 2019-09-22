@@ -1,0 +1,26 @@
+#controls{
+  margin-top: 5px;
+  font-size: 1.124em;
+}
+
+.c-row{
+  display: flex;
+}
+.c-title{
+  width: 50%;
+}
+.c-value{
+  width: 50%;
+  font-weight: bolder;
+}
+.c-val-edit{
+  color: green;
+  cursor: pointer;
+}
+
+input[type=number] {
+  width: 44%;
+  padding: 2px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}

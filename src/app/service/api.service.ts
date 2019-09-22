@@ -7,15 +7,23 @@ import { States } from '../interface/states';
 @Injectable({ providedIn: 'root' })
 export class ApiService {
 
-  private states: BehaviorSubject<States> = new BehaviorSubject<States>({tabular: null, controls: null});
+  private startState: States = {tabular: null, controls: {cursor: 0, perPage: 20}};
+  // private startState: States;
+
+  private states: BehaviorSubject<States> = new BehaviorSubject<States>(this.startState);
   curStates = this.states.asObservable();
   constructor(private http: HttpClient) {
-    this.getStartStates();
+    this.getStates(this.startState);
   }
 
-  getStartStates(): void {
+  getStates(states: States): void {
     this.http.get<Tabular[]>('../../../assets/fakeUsers.json')
-      .subscribe( res => this.states.next({tabular: res, controls: {cursor: 0, perPage: 10}}) );
+      .subscribe( res => this.states.next({tabular: res, controls: {cursor: states.controls.cursor, perPage: states.controls.perPage}}) );
+  }
+
+  updStates(states: States): void {
+    this.states.next(states);
+    // this.getStates(states);
   }
 
 }

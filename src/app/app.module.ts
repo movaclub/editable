@@ -10,6 +10,7 @@ import { ApiService } from './service/api.service';
 import { ControlService } from './service/control.service';
 import { TabularService } from './service/tabular.service';
 import { BooleanerPipe } from './pipe/booleaner.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BooleanerPipe } from './pipe/booleaner.pipe';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     ApiService,

@@ -1,1 +1,38 @@
-<div>controls works!</div>
+<div *ngIf="tabular?.length" id="controls">
+
+  <div class="c-row">
+    <span class="c-title">Total Records: </span>
+    <span class="c-value">{{tabular.length}}</span>
+  </div>
+
+  <div class="c-row">
+    <span class="c-title">Cursor: </span>
+    <span *ngIf="!editThis.cursor"
+          (dblclick)="toEdit('cursor', controls.cursor.toString())"
+          class="c-value c-val-edit">
+      {{controls?.cursor}}
+    </span>
+    <span *ngIf="editThis.cursor">
+      <input autofocus type="number"
+        (keyup.enter)="editControl('cursor', controls.cursor.toString())"
+        value="controls.cursor"
+        [(ngModel)]="controls.cursor" name="controls.cursor" />
+    </span>
+  </div>
+
+  <div class="c-row">
+    <span class="c-title">Per page: </span>
+    <span *ngIf="!editThis.perPage"
+      (dblclick)="toEdit('perPage', controls.perPage.toString())"
+      class="c-value c-val-edit">
+        {{controls?.perPage}}
+    </span>
+    <span *ngIf="editThis.perPage">
+      <input autofocus type="number"
+        (keyup.enter)="editControl('perPage', controls.perPage.toString())"
+        value="controls.perPage"
+        [(ngModel)]="controls.perPage" name="controls.perPage" />
+    </span>
+  </div>
+
+</div>

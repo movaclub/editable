@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Tabular } from '../../interface/tabular';
-import { Controls } from '../../interface/controls';
+// import { Controls } from '../../interface/controls';
 import { States } from '../../interface/states';
 
 import { ApiService } from '../../service/api.service';
-import {map, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {catchError, distinctUntilChanged, filter, map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-datum',
@@ -20,18 +19,38 @@ export class DatumComponent implements OnInit {
   constructor(private apiService: ApiService ) { }
 
   ngOnInit() {
-    this.apiService.curStates
-      .subscribe( res => this.getStartState(res).then( rez => this.userList = rez) );
+    this.getData();
   }
 
-  async getStartState(states: States): Promise<Tabular[]> {
+  private getData(): void {
+    this.apiService.curStates
+      .subscribe( (res) => {
+        this.userList = this.getCurState(res);
+      });
+  }
+
+  getCurState(states: States): Tabular[] {
 
     if ( typeof(states.tabular) !== 'undefined' && states.tabular && states.tabular.length ) {
-      return await states.tabular.splice(states.controls.cursor, states.controls.perPage);
+      return states.tabular.slice(states.controls.cursor, states.controls.cursor + states.controls.perPage);
     }
 
     return null;
 
   }
+
+  // getCurState(states: States): Tabular[] {
+  //
+  //   if ( typeof(states.tabular) !== 'undefined' && states.tabular && states.tabular.length ) {
+  //     const result = [];
+  //     for (let i = states.controls.cursor; i < states.controls.cursor + states.controls.perPage; i++) {
+  //       result.push(states.tabular[i]);
+  //     }
+  //     return result;
+  //   }
+  //
+  //   return null;
+  //
+  // }
 
 }
