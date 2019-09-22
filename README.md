@@ -1,5 +1,7 @@
 # EDit
 
+![editable screenshot](https://github.com/movaclub/editable/blob/master/editable.png)
+
 ## Objectives
 
 This is a workout to brush up Angular 8 usage, in which there are in-place editing, SPA state management with rxjs subject and some other group ops on a fake data set of 100 records.
