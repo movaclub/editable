@@ -5,33 +5,33 @@
     <div class="theader">
       <div class="fname">
         First Name
-        <span class="arrows">&uarr;</span>
-        <span class="arrows">&darr;</span>
+        <span (click)="sortUp('first')" class="arrows">&uarr;</span>
+        <span (click)="sortDown('first')" class="arrows">&darr;</span>
       </div>
       <div class="lname">
         Last Name
-        <span class="arrows">&uarr;</span>
-        <span class="arrows">&darr;</span>
+        <span (click)="sortUp('last')" class="arrows">&uarr;</span>
+        <span (click)="sortDown('last')" class="arrows">&darr;</span>
       </div>
       <div class="age">
         Age
-        <span class="arrows">&uarr;</span>
-        <span class="arrows">&darr;</span>
+        <span (click)="sortUp('age')" class="arrows">&uarr;</span>
+        <span (click)="sortDown('age')" class="arrows">&darr;</span>
       </div>
       <div class="status">
         Status
-        <span class="arrows">&uarr;</span>
-        <span class="arrows">&darr;</span>
+        <span (click)="sortUp('isActive')" class="arrows">&uarr;</span>
+        <span (click)="sortDown('isActive')" class="arrows">&darr;</span>
       </div>
       <div class="registered">
         Registered
-        <span class="arrows">&uarr;</span>
-        <span class="arrows">&darr;</span>
+        <span (click)="sortUp('registered')" class="arrows">&uarr;</span>
+        <span (click)="sortDown('registered')" class="arrows">&darr;</span>
       </div>
       <div class="company">
         Company
-        <span class="arrows">&uarr;</span>
-        <span class="arrows">&darr;</span>
+        <span (click)="sortUp('company')" class="arrows">&uarr;</span>
+        <span (click)="sortDown('company')" class="arrows">&darr;</span>
       </div>
     </div>
   </div>

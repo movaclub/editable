@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Tabular } from '../../interface/tabular';
-// import { Controls } from '../../interface/controls';
 import { States } from '../../interface/states';
-
-import { ApiService } from '../../service/api.service';
-import {catchError, distinctUntilChanged, filter, map, tap} from 'rxjs/operators';
 import {Controls} from '../../interface/controls';
+import { ApiService } from '../../service/api.service';
 
 @Component({
   selector: 'app-datum',
@@ -24,7 +21,7 @@ export class DatumComponent implements OnInit {
   public tabular: Tabular[];
   public controls: Controls;
 
-  constructor(private apiService: ApiService ) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.getData();
@@ -60,8 +57,8 @@ export class DatumComponent implements OnInit {
   }
 
   editControl(idx: number): void {
-    console.log('editControl-IDX: ', idx);
-    console.log('USRddata-IDX: ', this.userList[idx]);
+    // console.log('editControl-IDX: ', idx);
+    // console.log('USRddata-IDX: ', this.userList[idx]);
     this.editThis = {
       company: null,
       fname: null,
@@ -73,6 +70,30 @@ export class DatumComponent implements OnInit {
       }
     }
 
+    this.apiService.updStates({tabular: this.tabular, controls: this.controls});
+  }
+
+  sortUp(col: string): void {
+    // console.log('sortUp: ', col);
+    if ( col === 'registered' ) {
+      this.tabular.sort( (a, b) => ((new Date(a[col])).getTime() > (new Date(b[col])).getTime()) ? 1 : -1);
+    } else if ( col === 'last' || col === 'first' ) {
+      this.tabular.sort((a , b) => (a.name[col] > b.name[col]) ? 1 : -1);
+    } else {
+      this.tabular.sort((a , b) => (a[col] > b[col]) ? 1 : -1);
+    }
+    this.apiService.updStates({tabular: this.tabular, controls: this.controls});
+  }
+
+  sortDown(col: string): void {
+    // console.log('sortUp: ', col);
+    if ( col === 'registered' ) {
+      this.tabular.sort( (a, b) => ((new Date(a[col])).getTime() < (new Date(b[col])).getTime()) ? 1 : -1);
+    } else if ( col === 'last' || col === 'first' ) {
+      this.tabular.sort((a , b) => (a.name[col] < b.name[col]) ? 1 : -1);
+    } else {
+      this.tabular.sort((a , b) => (a[col] < b[col]) ? 1 : -1);
+    }
     this.apiService.updStates({tabular: this.tabular, controls: this.controls});
   }
 

@@ -21,9 +21,6 @@ export class ControlsComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.curStates
-      .pipe(
-        tap( states => console.log('cStates: ', states))
-      )
       .subscribe( (states) => {
         this.tabular = states.tabular;
         this.controls = states.controls; });
