@@ -21,6 +21,7 @@ export class DatumComponent implements OnInit {
   };
 
   public userList: Tabular[];
+  public tabular: Tabular[];
   public controls: Controls;
 
   constructor(private apiService: ApiService ) { }
@@ -33,7 +34,8 @@ export class DatumComponent implements OnInit {
     this.apiService.curStates
       .subscribe( (res) => {
         this.controls = res.controls;
-        this.userList = this.getCurState(res);
+        this.tabular = res.tabular; // the full list
+        this.userList = this.getCurState(res); // the list to display
       });
   }
 
@@ -65,8 +67,13 @@ export class DatumComponent implements OnInit {
       fname: null,
       lname: null
     };
+    for ( const item of this.tabular ) {
+      if ( item._id === this.userList[idx]._id ) {
+        item.company = this.userList[idx].company;
+      }
+    }
 
-    this.apiService.updStates({tabular: this.userList, controls: this.controls});
+    this.apiService.updStates({tabular: this.tabular, controls: this.controls});
   }
 
 }
