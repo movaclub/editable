@@ -37,7 +37,7 @@
   </div>
 
 <!--  <ng-container *ngFor="let user of users">-->
-  <ng-container *ngFor="let user of userList">
+  <ng-container *ngFor="let user of userList; let i = index" [attr.data-index]="i">
     <div style="flex-direction: row;">
       <div class="tbody">
         <div class="fname">
@@ -53,8 +53,16 @@
         <div class="registered">
           {{user.registered | date}}
         </div>
-        <div class="company">
+        <div *ngIf="editThis.company !== i"
+             (dblclick)="toEdit(i)"
+             class="company c-val-edit">
           {{user.company}}
+        </div>
+        <div *ngIf="editThis.company === i">
+          <input autofocus type="text"
+                 (keyup.enter)="editControl(i)"
+                 value="user.company"
+                 [(ngModel)]="user.company" name="user.company" />
         </div>
       </div>
     </div>

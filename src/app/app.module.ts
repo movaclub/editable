@@ -7,8 +7,6 @@ import { ControlsComponent } from './comps/controls/controls.component';
 import { DatumComponent } from './comps/datum/datum.component';
 
 import { ApiService } from './service/api.service';
-import { ControlService } from './service/control.service';
-import { TabularService } from './service/tabular.service';
 import { BooleanerPipe } from './pipe/booleaner.pipe';
 import { FormsModule } from '@angular/forms';
 
@@ -25,9 +23,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [
-    ApiService,
-    ControlService,
-    TabularService
+    ApiService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -5,6 +5,7 @@ import { States } from '../../interface/states';
 
 import { ApiService } from '../../service/api.service';
 import {catchError, distinctUntilChanged, filter, map, tap} from 'rxjs/operators';
+import {Controls} from '../../interface/controls';
 
 @Component({
   selector: 'app-datum',
@@ -13,8 +14,14 @@ import {catchError, distinctUntilChanged, filter, map, tap} from 'rxjs/operators
 })
 export class DatumComponent implements OnInit {
 
-  // userList$: Observable<Tabular[]>;
-  userList: Tabular[];
+  public editThis = {
+    company: null, // >=0 means a Co. record is chosen for editing
+    fname: null, // maybe in the future...
+    lname: null // ...
+  };
+
+  public userList: Tabular[];
+  public controls: Controls;
 
   constructor(private apiService: ApiService ) { }
 
@@ -25,6 +32,7 @@ export class DatumComponent implements OnInit {
   private getData(): void {
     this.apiService.curStates
       .subscribe( (res) => {
+        this.controls = res.controls;
         this.userList = this.getCurState(res);
       });
   }
@@ -39,18 +47,26 @@ export class DatumComponent implements OnInit {
 
   }
 
-  // getCurState(states: States): Tabular[] {
-  //
-  //   if ( typeof(states.tabular) !== 'undefined' && states.tabular && states.tabular.length ) {
-  //     const result = [];
-  //     for (let i = states.controls.cursor; i < states.controls.cursor + states.controls.perPage; i++) {
-  //       result.push(states.tabular[i]);
-  //     }
-  //     return result;
-  //   }
-  //
-  //   return null;
-  //
-  // }
+  toEdit(idx: number): void {
+    console.log('toEdit-IDX: ', idx);
+    this.editThis = {
+      company: null,
+      fname: null,
+      lname: null
+    };
+    this.editThis.company = idx;
+  }
+
+  editControl(idx: number): void {
+    console.log('editControl-IDX: ', idx);
+    console.log('USRddata-IDX: ', this.userList[idx]);
+    this.editThis = {
+      company: null,
+      fname: null,
+      lname: null
+    };
+
+    this.apiService.updStates({tabular: this.userList, controls: this.controls});
+  }
 
 }

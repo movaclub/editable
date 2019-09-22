@@ -41,3 +41,10 @@ $teal-color: teal;
   background-color: $teal-color;
   border-radius: 49%;
 }
+
+input[type=text] {
+  width: 69%;
+  padding: 2px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}

@@ -8,10 +8,9 @@ import { States } from '../interface/states';
 export class ApiService {
 
   private startState: States = {tabular: null, controls: {cursor: 0, perPage: 20}};
-  // private startState: States;
-
   private states: BehaviorSubject<States> = new BehaviorSubject<States>(this.startState);
   curStates = this.states.asObservable();
+
   constructor(private http: HttpClient) {
     this.getStates(this.startState);
   }
@@ -23,7 +22,6 @@ export class ApiService {
 
   updStates(states: States): void {
     this.states.next(states);
-    // this.getStates(states);
   }
 
 }
