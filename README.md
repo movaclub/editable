@@ -1,5 +1,17 @@
 # EDit
 
+## Objectives
+
+This is a workout to brush up Angular 8 usage, in which there are in-place editing, SPA state management with rxjs subject and some other group ops on a fake data set of 100 records.
+
+All green text bits, i.e. _cursor_, _per page_ and _company_ are editable upon double click.
+
+The application retains an edited value on _Enter_ click until reflresh or another launching: the fake data set is loaded from local JSON file.
+
+The table columns aren't toggleable, but are sortable.
+
+## Developer's notes
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
 
 ## Development server
